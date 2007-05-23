@@ -1,5 +1,3 @@
-%define php_extension_dir %(php-config --extension-dir)
-
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
 Version:	1.0.0
@@ -26,7 +24,6 @@ other programming languages.
 #Group:		Development/Java
 #Requires:	%{name} = %{version}-%{release}
 #Requires:	java
-#Requires:	xapian
 
 #%description java
 #This package provides the files needed for developing Java applications which use Xapian.
@@ -36,51 +33,50 @@ Summary:	Files needed for developing C# applications which use Xapian
 Group:		Development/Other
 Requires:	%{name} = %{version}-%{release}
 Requires:	mono
-Requires:	xapian
 
 %description mono
-This package provides the files needed for developing C# applications which use Xapian.
+This package provides the files needed for developing 
+C# applications which use Xapian.
 
 %package php
 Summary:	Files needed for developing PHP scripts which use Xapian
 Group:		Development/PHP
 Requires:	%{name} = %{version}-%{release}
 Requires:	php-common
-Requires:	xapian
 
 %description php
-This package provides the files needed for developing PHP scripts which use Xapian.
+This package provides the files needed for developing 
+PHP scripts which use Xapian.
 
 %package python
 Summary:	Files needed for developing Python scripts which use Xapian
 Group:		Development/Python
 Requires:	%{name} = %{version}-%{release}
 Requires:	python >= %{py_ver}
-Requires:	xapian
 
 %description python
-This package provides the files needed for developing Python scripts which use Xapian.
+This package provides the files needed for developing 
+Python scripts which use Xapian.
 
 %package ruby
 Summary:	Files needed for developing Ruby applications which use Xapian
 Group:		Development/Ruby
 Requires:	%{name} = %{version}-%{release}
 Requires:	ruby
-Requires:	xapian
 
 %description ruby
-This package provides the files needed for developing Ruby applications which use Xapian.
+This package provides the files needed for developing 
+Ruby applications which use Xapian.
 
 %package tcl
 Summary:	Files needed for developing TCL scripts which use Xapian
 Group:		Development/Other
 Requires:	%{name} = %{version}-%{release}
 Requires:	tcl
-Requires:	xapian
 
 %description tcl
-This package provides the files needed for developing TCL scripts which use Xapian.
-
+This package provides the files needed for developing 
+TCL scripts which use Xapian.
 
 %prep
 %setup -q
@@ -124,7 +120,7 @@ autoreconf --force
 %files php
 %defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/php
-%{php_extension_dir}/xapian.so
+%{_libdir}/php/extensions/xapian.so
 
 %files python
 %defattr(-,root,root)
