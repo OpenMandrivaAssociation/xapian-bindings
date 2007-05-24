@@ -1,7 +1,7 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
 Version:	1.0.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 Group:		Development/Other
 URL:		http://www.xapian.org
@@ -22,7 +22,7 @@ other programming languages.
 #%package java
 #Summary:	Files needed for developing Java applications which use Xapian
 #Group:		Development/Java
-#Requires:	%{name} = %{version}-%{release}
+#Requires:	xapian >= %{version}
 #Requires:	java
 
 #%description java
@@ -31,7 +31,7 @@ other programming languages.
 %package mono
 Summary:	Files needed for developing C# applications which use Xapian
 Group:		Development/Other
-Requires:	%{name} = %{version}-%{release}
+Requires:	xapian >= %{version}
 Requires:	mono
 
 %description mono
@@ -41,7 +41,7 @@ C# applications which use Xapian.
 %package php
 Summary:	Files needed for developing PHP scripts which use Xapian
 Group:		Development/PHP
-Requires:	%{name} = %{version}-%{release}
+Requires:	xapian >= %{version}
 Requires:	php-common
 
 %description php
@@ -51,7 +51,7 @@ PHP scripts which use Xapian.
 %package python
 Summary:	Files needed for developing Python scripts which use Xapian
 Group:		Development/Python
-Requires:	%{name} = %{version}-%{release}
+Requires:	xapian >= %{version}
 Requires:	python >= %{py_ver}
 
 %description python
@@ -61,7 +61,7 @@ Python scripts which use Xapian.
 %package ruby
 Summary:	Files needed for developing Ruby applications which use Xapian
 Group:		Development/Ruby
-Requires:	%{name} = %{version}-%{release}
+Requires:	xapian >= %{version}
 Requires:	ruby
 
 %description ruby
@@ -71,7 +71,7 @@ Ruby applications which use Xapian.
 %package tcl
 Summary:	Files needed for developing TCL scripts which use Xapian
 Group:		Development/Other
-Requires:	%{name} = %{version}-%{release}
+Requires:	xapian >= %{version}
 Requires:	tcl
 
 %description tcl
