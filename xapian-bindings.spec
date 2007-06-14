@@ -115,7 +115,7 @@ autoreconf --force
 %{_libdir}/XapianSharp.la
 %{_libdir}/XapianSharp.so
 %{_libdir}/mono/XapianSharp/XapianSharp.dll
-%{_libdir}/mono/gac/XapianSharp/1.0.0.0*/XapianSharp.dll
+%{_libdir}/mono/gac/XapianSharp/%{version}*/XapianSharp.dll
 
 %files php
 %defattr(-,root,root)
@@ -125,9 +125,8 @@ autoreconf --force
 %files python
 %defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/python
-%{_libdir}/python%{py_ver}/site-packages/_xapian.so
-%{_libdir}/python%{py_ver}/site-packages/xapian.py
-%{_libdir}/python%{py_ver}/site-packages/xapian.pyc
+%{python_sitearch}/*.py*
+%{python_sitelib}/*.so
 
 %files ruby
 %defattr(-,root,root)
@@ -138,5 +137,5 @@ autoreconf --force
 %files tcl
 %defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/tcl8
-%{_prefix}/lib/xapian1.0.0/pkgIndex.tcl
-%{_prefix}/lib/xapian1.0.0/xapian.so
+%{_prefix}/lib/xapian%{version}/pkgIndex.tcl
+%{_prefix}/lib/xapian%{version}/xapian.so
