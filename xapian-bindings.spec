@@ -126,7 +126,7 @@ autoreconf --force
 %defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/python
 %{python_sitearch}/*.py*
-%{python_sitelib}/*.so
+%{python_sitearch}/*.so
 
 %files ruby
 %defattr(-,root,root)
