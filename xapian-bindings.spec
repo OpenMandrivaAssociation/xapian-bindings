@@ -1,7 +1,7 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
-Version:	1.0.0
-Release:	%mkrel 2
+Version:	1.0.1
+Release:	%mkrel 1
 License:	GPL
 Group:		Development/Other
 URL:		http://www.xapian.org
@@ -52,7 +52,7 @@ PHP scripts which use Xapian.
 Summary:	Files needed for developing Python scripts which use Xapian
 Group:		Development/Python
 Requires:	xapian >= %{version}
-Requires:	python >= %{py_ver}
+Requires:	python >= 2.5
 
 %description python
 This package provides the files needed for developing 
