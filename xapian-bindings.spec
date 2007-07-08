@@ -121,6 +121,7 @@ autoreconf --force
 %defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/php
 %{_libdir}/php/extensions/xapian.so
+%{_datadir}/php5/xapian.php
 
 %files python
 %defattr(-,root,root)
