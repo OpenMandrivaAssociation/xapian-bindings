@@ -1,13 +1,13 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
-Version:	1.0.2
+Version:	1.0.3
 Release:	%mkrel 1
-License:	GPL
+License:	GPLv2
 Group:		Development/Other
 URL:		http://www.xapian.org
-Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.bz2
+Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:	xapian-devel
-BuildRequires:	python-devel	>= %{py_ver}
+%py_requires -d
 BuildRequires:	php-devel
 BuildRequires:	tcl-devel
 BuildRequires:	java-devel
