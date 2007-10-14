@@ -132,8 +132,8 @@ autoreconf --force
 %files ruby
 %defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/ruby
-%{ruby_libdir}/*-linux-gnu/_xapian.so
-%{ruby_libdir}/xapian.rb
+%{ruby_sitearchdir}/_xapian.so
+%{ruby_sitelibdir}/xapian.rb
 
 %files tcl
 %defattr(-,root,root)
