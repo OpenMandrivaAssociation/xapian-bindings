@@ -13,7 +13,6 @@ BuildRequires:	tcl-devel
 BuildRequires:	java-devel
 BuildRequires:	ruby-devel
 BuildRequires:	mono-devel
-Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 SWIG and JNI bindings allowing Xapian to be used from various 
