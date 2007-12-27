@@ -6,11 +6,13 @@ License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
 Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.bz2
-BuildRequires:	xapian-devel
+BuildRequires:	xapian-devel >= %{version}
 %py_requires -d
 BuildRequires:	php-devel
+BuildRequires:	php-cli
 BuildRequires:	tcl-devel
-BuildRequires:	java-devel
+BuildRequires:	java-devel-icedtea
+#BuildRequires:	java-gcj-compat-devel
 BuildRequires:	ruby-devel
 BuildRequires:	mono-devel
 
@@ -18,19 +20,19 @@ BuildRequires:	mono-devel
 SWIG and JNI bindings allowing Xapian to be used from various 
 other programming languages.
 
-#%package java
-#Summary:	Files needed for developing Java applications which use Xapian
-#Group:		Development/Java
-#Requires:	xapian >= %{version}
-#Requires:	java
+%package java
+Summary:	Files needed for developing Java applications which use Xapian
+Group:		Development/Java
+Requires:	xapian-core >= %{version}
+Requires:	java-1.7.0-icedtea
 
-#%description java
-#This package provides the files needed for developing Java applications which use Xapian.
+%description java
+This package provides the files needed for developing Java applications which use Xapian.
 
 %package mono
 Summary:	Files needed for developing C# applications which use Xapian
 Group:		Development/Other
-Requires:	xapian >= %{version}
+Requires:	xapian-core >= %{version}
 Requires:	mono
 
 %description mono
@@ -40,7 +42,7 @@ C# applications which use Xapian.
 %package php
 Summary:	Files needed for developing PHP scripts which use Xapian
 Group:		Development/PHP
-Requires:	xapian >= %{version}
+Requires:	xapian-core >= %{version}
 Requires:	php-common
 
 %description php
@@ -50,7 +52,7 @@ PHP scripts which use Xapian.
 %package python
 Summary:	Files needed for developing Python scripts which use Xapian
 Group:		Development/Python
-Requires:	xapian >= %{version}
+Requires:	xapian-core >= %{version}
 Requires:	python >= 2.5
 
 %description python
@@ -60,7 +62,7 @@ Python scripts which use Xapian.
 %package ruby
 Summary:	Files needed for developing Ruby applications which use Xapian
 Group:		Development/Ruby
-Requires:	xapian >= %{version}
+Requires:	xapian-core >= %{version}
 Requires:	ruby
 
 %description ruby
@@ -70,7 +72,7 @@ Ruby applications which use Xapian.
 %package tcl
 Summary:	Files needed for developing TCL scripts which use Xapian
 Group:		Development/Other
-Requires:	xapian >= %{version}
+Requires:	xapian-core >= %{version}
 Requires:	tcl
 
 %description tcl
@@ -81,32 +83,36 @@ TCL scripts which use Xapian.
 %setup -q
 
 %build
-autoreconf --force
+#autoreconf --force
+#export CFLAGS="%{optflags} -I%{java_home}/include"
+export JNI_INCLUDE_DIR=%{_prefix}/lib/jvm/java-1.7.0-icedtea/include/
+export JDK_HOME=%{_prefix}/lib/jvm/java-1.7.0-icedtea/
 
 %configure2_5x \
 	--with-csharp \
 	--with-php \
 	--with-python \
 	--with-ruby \
-	--with-tcl
-#	--with-java
+	--with-tcl \
+	--with-java
 
 %make
 
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-%makeinstall_std
+
+%makeinstall_std DESTDIR=%{buildroot}
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 #%files
 #%defattr(-,root,root)
-#%doc AUTHORS ChangeLog COPYING NEWS README
+#%doc AUTHORS ChangeLog NEWS README
 
-#%files java
-#%defattr(-,root,root)
-#%{buildroot}/java/built/libxapian_jni.so
+%files java
+%defattr(-,root,root)
+%{buildroot}/java/built/libxapian_jni.so
 
 %files mono
 %defattr(-,root,root)
