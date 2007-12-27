@@ -11,8 +11,7 @@ BuildRequires:	xapian-devel >= %{version}
 BuildRequires:	php-devel
 BuildRequires:	php-cli
 BuildRequires:	tcl-devel
-BuildRequires:	java-devel-icedtea
-#BuildRequires:	java-gcj-compat-devel
+BuildRequires:	java-rpmbuild
 BuildRequires:	ruby-devel
 BuildRequires:	mono-devel
 
@@ -84,9 +83,12 @@ TCL scripts which use Xapian.
 
 %build
 #autoreconf --force
-#export CFLAGS="%{optflags} -I%{java_home}/include"
-export JNI_INCLUDE_DIR=%{_prefix}/lib/jvm/java-1.7.0-icedtea/include/
-export JDK_HOME=%{_prefix}/lib/jvm/java-1.7.0-icedtea/
+# We want to avoid using jni.h from libgcj-devel, so we force
+# the includedir instead of using ./configure detection, which would
+# default to libgcj jni.h:
+# - Anssi (12/2007)
+export CPPFLAGS="-I%{java_home}/include"
+export JDK_HOME=%{java_home}
 
 %configure2_5x \
 	--with-csharp \
@@ -101,7 +103,7 @@ export JDK_HOME=%{_prefix}/lib/jvm/java-1.7.0-icedtea/
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
-%makeinstall_std DESTDIR=%{buildroot}
+%makeinstall_std
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
