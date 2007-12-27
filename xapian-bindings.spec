@@ -6,6 +6,7 @@ License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
 Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.bz2
+Patch0:		xapian-bindings-1.0.5-ruby-docs-install.patch
 BuildRequires:	xapian-devel >= %{version}
 %py_requires -d
 BuildRequires:	php-devel
@@ -80,9 +81,9 @@ TCL scripts which use Xapian.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-#autoreconf --force
 # We want to avoid using jni.h from libgcj-devel, so we force
 # the includedir instead of using ./configure detection, which would
 # default to libgcj jni.h:
@@ -105,16 +106,13 @@ export JDK_HOME=%{java_home}
 
 %makeinstall_std
 
+
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
-#%files
-#%defattr(-,root,root)
-#%doc AUTHORS ChangeLog NEWS README
-
 %files java
 %defattr(-,root,root)
-%{buildroot}/java/built/libxapian_jni.so
+#%{buildroot}/java/built/libxapian_jni.so
 
 %files mono
 %defattr(-,root,root)
