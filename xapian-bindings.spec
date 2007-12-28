@@ -106,13 +106,21 @@ export JDK_HOME=%{java_home}
 
 %makeinstall_std
 
+# Move to a proper location
+install -d -m755 %{buildroot}%{_libdir}
+mv %{buildroot}%{_builddir}/%{name}-%{version}/java/built/libxapian_jni.so %{buildroot}%{_libdir}
+
+# Install the needed jar file as well
+install -d -m755 %{buildroot}%{_jnidir}
+install -m644 java/built/xapian_jni.jar %{buildroot}%{_jnidir}
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %files java
 %defattr(-,root,root)
-#%{buildroot}/java/built/libxapian_jni.so
+%{_libdir}/libxapian_jni.so
+%{_jnidir}/xapian_jni.jar
 
 %files mono
 %defattr(-,root,root)
