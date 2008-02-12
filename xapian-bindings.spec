@@ -27,7 +27,8 @@ Requires:	xapian-core >= %{version}
 Requires:	java-1.7.0-icedtea
 
 %description java
-This package provides the files needed for developing Java applications which use Xapian.
+This package provides the files needed for developing Java applications which
+use Xapian.
 
 %package mono
 Summary:	Files needed for developing C# applications which use Xapian
