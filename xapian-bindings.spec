@@ -4,6 +4,7 @@ Version:	1.0.5
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Development/Other
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.xapian.org
 Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		xapian-bindings-1.0.5-ruby-docs-install.patch
