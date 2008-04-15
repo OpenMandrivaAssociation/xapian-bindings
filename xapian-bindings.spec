@@ -1,10 +1,9 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
-Version:	1.0.5
+Version:	1.0.6
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Development/Other
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.xapian.org
 Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		xapian-bindings-1.0.5-ruby-docs-install.patch
@@ -16,6 +15,7 @@ BuildRequires:	tcl-devel
 BuildRequires:	java-rpmbuild
 BuildRequires:	ruby-devel
 BuildRequires:	mono-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 SWIG and JNI bindings allowing Xapian to be used from various 
