@@ -1,6 +1,6 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
-Version:	1.0.6
+Version:	1.0.7
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Development/Other
