@@ -1,7 +1,7 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
 Version:	1.0.9
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
@@ -90,6 +90,7 @@ TCL scripts which use Xapian.
 # - Anssi (12/2007)
 export CPPFLAGS="-I%{java_home}/include"
 export JDK_HOME=%{java_home}
+export TCL_LIB=%{tcl_sitearch}
 
 %configure2_5x \
 	--with-csharp \
@@ -151,5 +152,5 @@ install -m644 java/built/xapian_jni.jar %{buildroot}%{_jnidir}
 %files tcl
 %defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/tcl8
-%{_libdir}/xapian%{version}/pkgIndex.tcl
-%{_libdir}/xapian%{version}/xapian.so
+%{tcl_sitearch}/xapian%{version}/*
+
