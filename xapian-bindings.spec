@@ -1,7 +1,7 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
-Version:	1.0.9
-Release:	%mkrel 2
+Version:	1.0.10
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
@@ -84,11 +84,14 @@ TCL scripts which use Xapian.
 %setup -q
 
 %build
+# (tpg) do not check for this, to much effort to provide a patch
+%define Werror_cflags %nil
+
 # We want to avoid using jni.h from libgcj-devel, so we force
 # the includedir instead of using ./configure detection, which would
 # default to libgcj jni.h:
 # - Anssi (12/2007)
-export CPPFLAGS="-I%{java_home}/include"
+export CPPFLAGS="%{optflags} -I%{java_home}/include"
 export JDK_HOME=%{java_home}
 export TCL_LIB=%{tcl_sitearch}
 
