@@ -6,6 +6,8 @@ License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
 Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.bz2
+Patch0:		xapian-bindings-1.0.10-no-pyc.patch
+Patch1:		xapian-bindings-1.0.10-link-modules.patch
 BuildRequires:	xapian-devel >= %{version}
 %py_requires -d
 BuildRequires:	php-devel
@@ -82,6 +84,8 @@ TCL scripts which use Xapian.
 
 %prep
 %setup -q
+%patch0 -p0
+%patch1 -p0
 
 %build
 # (tpg) do not check for this, to much effort to provide a patch
@@ -94,7 +98,7 @@ TCL scripts which use Xapian.
 export CPPFLAGS="%{optflags} -I%{java_home}/include"
 export JDK_HOME=%{java_home}
 export TCL_LIB=%{tcl_sitearch}
-
+autoconf
 %configure2_5x \
 	--with-csharp \
 	--with-php \
