@@ -1,13 +1,12 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
-Version:	1.0.10
+Version:	1.0.12
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
 Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		xapian-bindings-1.0.10-no-pyc.patch
-Patch1:		xapian-bindings-1.0.10-link-modules.patch
 BuildRequires:	xapian-devel >= %{version}
 %py_requires -d
 BuildRequires:	php-devel
@@ -85,7 +84,6 @@ TCL scripts which use Xapian.
 %prep
 %setup -q
 %patch0 -p0
-%patch1 -p0
 
 %build
 # (tpg) do not check for this, to much effort to provide a patch
@@ -133,8 +131,8 @@ install -m644 java/built/xapian_jni.jar %{buildroot}%{_jnidir}
 %files mono
 %defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/csharp
-%{_libdir}/XapianSharp.la
-%{_libdir}/XapianSharp.so
+%{_libdir}/_XapianSharp.la
+%{_libdir}/_XapianSharp.so
 %{_libdir}/mono/XapianSharp/XapianSharp.dll
 %{_libdir}/mono/gac/XapianSharp/%{version}*/XapianSharp.dll
 
