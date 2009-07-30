@@ -105,7 +105,7 @@ autoconf
 	--with-tcl \
 	--with-java
 
-%make
+make
 
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
