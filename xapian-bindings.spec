@@ -1,7 +1,7 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
 Version:	1.0.16
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
@@ -45,7 +45,6 @@ C# applications which use Xapian.
 Summary:	Files needed for developing PHP scripts which use Xapian
 Group:		Development/PHP
 Requires:	xapian-core >= %{version}
-Requires:	php-common
 
 %description php
 This package provides the files needed for developing 
