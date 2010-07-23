@@ -1,12 +1,12 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
-Version:	1.0.19
+Version:	1.2.2
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
 Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.bz2
-Patch0:		xapian-bindings-1.0.10-no-pyc.patch
+Patch0:		xapian-bindings-1.2.2-no-pyc.patch
 BuildRequires:	xapian-devel >= %{version}
 %py_requires -d
 BuildRequires:	php-devel
@@ -45,6 +45,7 @@ C# applications which use Xapian.
 Summary:	Files needed for developing PHP scripts which use Xapian
 Group:		Development/PHP
 Requires:	xapian-core >= %{version}
+Requires:	php
 
 %description php
 This package provides the files needed for developing 
@@ -82,7 +83,7 @@ TCL scripts which use Xapian.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0 -p1
 
 %build
 # (tpg) do not check for this, to much effort to provide a patch
@@ -95,7 +96,7 @@ TCL scripts which use Xapian.
 export CPPFLAGS="%{optflags} -I%{java_home}/include"
 export JDK_HOME=%{java_home}
 export TCL_LIB=%{tcl_sitearch}
-autoconf
+autoreconf -fiv
 %configure2_5x \
 	--with-csharp \
 	--with-php \
@@ -104,7 +105,7 @@ autoconf
 	--with-tcl \
 	--with-java
 
-make
+%make
 
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
@@ -144,8 +145,8 @@ install -m644 java/built/xapian_jni.jar %{buildroot}%{_jnidir}
 %files python
 %defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/python
-%{python_sitearch}/*.py*
-%{python_sitearch}/*.so
+%{python_sitearch}/xapian/*.py*
+%{python_sitearch}/xapian/*.so
 
 %files ruby
 %defattr(-,root,root)
