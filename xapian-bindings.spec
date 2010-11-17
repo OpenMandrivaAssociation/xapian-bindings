@@ -1,14 +1,15 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
 Version:	1.2.3
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
 Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.bz2
 Patch0:		xapian-bindings-1.2.2-no-pyc.patch
+Patch1:		xapian-bindings-1.2.3-linkage.patch
 BuildRequires:	xapian-devel >= %{version}
-%py_requires -d
+BuildRequires:	python-devel
 BuildRequires:	php-devel
 BuildRequires:	php-cli
 BuildRequires:	tcl-devel
@@ -84,6 +85,7 @@ TCL scripts which use Xapian.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p0 -b .link
 
 %build
 # (tpg) do not check for this, to much effort to provide a patch
