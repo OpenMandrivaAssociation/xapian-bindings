@@ -1,7 +1,7 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
-Version:	1.2.3
-Release:	%mkrel 3
+Version:	1.2.5
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
@@ -85,7 +85,7 @@ TCL scripts which use Xapian.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p0 -b .link
+#%patch1 -p0 -b .link
 
 %build
 # (tpg) do not check for this, to much effort to provide a patch
@@ -133,7 +133,6 @@ install -m644 java/built/xapian_jni.jar %{buildroot}%{_jnidir}
 %files mono
 %defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/csharp
-%{_libdir}/_XapianSharp.la
 %{_libdir}/_XapianSharp.so
 %{_libdir}/mono/XapianSharp/XapianSharp.dll
 %{_libdir}/mono/gac/XapianSharp/%{version}*/XapianSharp.dll
