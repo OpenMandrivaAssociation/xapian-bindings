@@ -1,0 +1,24 @@
+diff -Naur xapian-bindings-1.2.2//python/Makefile.am xapian-bindings-1.2.2.tpg//python/Makefile.am
+--- xapian-bindings-1.2.2//python/Makefile.am	2010-06-27 06:06:48.000000000 +0000
++++ xapian-bindings-1.2.2.tpg//python/Makefile.am	2010-07-23 20:43:24.000000000 +0000
+@@ -37,7 +37,7 @@
+ 
+ # Install as _DATA rather than _SCRIPTS because we don't want to make these
+ # executable (they don't have a #! line).
+-pkgpylib_DATA = xapian/__init__.py xapian/__init__.pyc xapian/__init__.pyo
++pkgpylib_DATA = xapian/__init__.py
+ 
+ pkgpylib_LTLIBRARIES = _xapian.la
+ 
+diff -Naur xapian-bindings-1.2.2//python/Makefile.in xapian-bindings-1.2.2.tpg//python/Makefile.in
+--- xapian-bindings-1.2.2//python/Makefile.in	2010-06-27 06:13:07.000000000 +0000
++++ xapian-bindings-1.2.2.tpg//python/Makefile.in	2010-07-23 20:43:54.000000000 +0000
+@@ -373,7 +373,7 @@
+ 
+ # Install as _DATA rather than _SCRIPTS because we don't want to make these
+ # executable (they don't have a #! line).
+-pkgpylib_DATA = xapian/__init__.py xapian/__init__.pyc xapian/__init__.pyo
++pkgpylib_DATA = xapian/__init__.py
+ pkgpylib_LTLIBRARIES = _xapian.la
+ AM_CPPFLAGS = -I$(PYTHON_INC)
+ AM_CXXFLAGS = $(SWIG_CXXFLAGS) $(XAPIAN_CXXFLAGS)
