@@ -1,13 +1,12 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
-Version:	1.2.5
-Release:	%mkrel 1
+Version:	1.2.12
+Release:	1
 License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
-Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.bz2
+Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.gz
 Patch0:		xapian-bindings-1.2.2-no-pyc.patch
-Patch1:		xapian-bindings-1.2.3-linkage.patch
 BuildRequires:	xapian-devel >= %{version}
 BuildRequires:	python-devel
 BuildRequires:	php-devel
@@ -16,7 +15,6 @@ BuildRequires:	tcl-devel
 BuildRequires:	java-rpmbuild
 BuildRequires:	ruby-devel
 BuildRequires:	mono-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 SWIG and JNI bindings allowing Xapian to be used from various 
@@ -85,7 +83,6 @@ TCL scripts which use Xapian.
 %prep
 %setup -q
 %patch0 -p1
-#%patch1 -p0 -b .link
 
 %build
 # (tpg) do not check for this, to much effort to provide a patch
@@ -110,8 +107,6 @@ autoreconf -fiv
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
 %makeinstall_std
 
 # Move to a proper location
@@ -122,41 +117,32 @@ mv %{buildroot}%{_builddir}/%{name}-%{version}/java/built/libxapian_jni.so %{bui
 install -d -m755 %{buildroot}%{_jnidir}
 install -m644 java/built/xapian_jni.jar %{buildroot}%{_jnidir}
 
-%clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
 %files java
-%defattr(-,root,root)
 %{_libdir}/libxapian_jni.so
 %{_jnidir}/xapian_jni.jar
 
 %files mono
-%defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/csharp
 %{_libdir}/_XapianSharp.so
 %{_libdir}/mono/XapianSharp/XapianSharp.dll
 %{_libdir}/mono/gac/XapianSharp/%{version}*/XapianSharp.dll
 
 %files php
-%defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/php
 %{_libdir}/php/extensions/xapian.so
 %{_datadir}/php5/xapian.php
 
 %files python
-%defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/python
 %{python_sitearch}/xapian/*.py*
 %{python_sitearch}/xapian/*.so
 
 %files ruby
-%defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/ruby
 %{ruby_sitearchdir}/_xapian.so
 %{ruby_sitelibdir}/xapian.rb
 
 %files tcl
-%defattr(-,root,root)
 %doc %{_docdir}/xapian-bindings/tcl8
 %{tcl_sitearch}/xapian%{version}/*
 
