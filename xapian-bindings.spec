@@ -24,7 +24,7 @@ other programming languages.
 Summary:	Files needed for developing Java applications which use Xapian
 Group:		Development/Java
 Requires:	xapian-core >= %{version}
-Requires:	java-1.7.0-icedtea
+Requires:	java-1.7.0-openjdk
 
 %description java
 This package provides the files needed for developing Java applications which
