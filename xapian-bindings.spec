@@ -1,3 +1,5 @@
+%define build_mono 0
+
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
 Version:	1.2.17
@@ -31,6 +33,7 @@ Requires:	java-1.7.0-openjdk
 This package provides the files needed for developing Java applications which
 use Xapian.
 
+%if %build_mono
 %package mono
 Summary:	Files needed for developing C# applications which use Xapian
 Group:		Development/Other
@@ -40,6 +43,7 @@ Requires:	mono
 %description mono
 This package provides the files needed for developing 
 C# applications which use Xapian.
+%endif
 
 %package php
 Summary:	Files needed for developing PHP scripts which use Xapian
@@ -99,7 +103,9 @@ export TCL_LIB=%{tcl_sitearch}
 export TCL_INC=%{_includedir}
 autoreconf -fiv
 %configure2_5x \
+%if %build_mono
 	--with-csharp \
+%endif
 	--with-php \
 	--with-python \
 	--with-ruby \
@@ -123,12 +129,13 @@ install -m644 java/built/xapian_jni.jar %{buildroot}%{_jnidir}
 %{_libdir}/libxapian_jni.so
 %{_jnidir}/xapian_jni.jar
 
+%if %build_mono
 %files mono
 %doc %{_docdir}/xapian-bindings/csharp
 %{_libdir}/_XapianSharp.so
 %{_libdir}/mono/XapianSharp/XapianSharp.dll
 %{_libdir}/mono/gac/XapianSharp/%{version}*/XapianSharp.dll
-
+%endif
 %files php
 %doc %{_docdir}/xapian-bindings/php
 %{_libdir}/php/extensions/xapian.so
