@@ -96,6 +96,7 @@ TCL scripts which use Xapian.
 export CPPFLAGS="%{optflags} -I%{java_home}/include"
 export JDK_HOME=%{java_home}
 export TCL_LIB=%{tcl_sitearch}
+export TCL_INC=%{_includedir}
 autoreconf -fiv
 %configure2_5x \
 	--with-csharp \
