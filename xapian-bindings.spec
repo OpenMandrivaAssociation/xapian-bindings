@@ -15,6 +15,7 @@ BuildRequires:	tcl-devel
 BuildRequires:	java-rpmbuild
 BuildRequires:	ruby-devel
 BuildRequires:	mono-devel
+BuildRequires:	java-1.7.0-devel
 
 %description
 SWIG and JNI bindings allowing Xapian to be used from various 
