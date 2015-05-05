@@ -2,8 +2,8 @@
 
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
-Version:	1.2.17
-Release:	2
+Version:	1.2.20
+Release:	1
 License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
@@ -102,7 +102,7 @@ export JDK_HOME=%{java_home}
 export TCL_LIB=%{tcl_sitearch}
 export TCL_INC=%{_includedir}
 autoreconf -fiv
-%configure2_5x \
+%configure \
 %if %build_mono
 	--with-csharp \
 %endif
