@@ -10,7 +10,7 @@ URL:		http://www.xapian.org
 Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.xz
 Patch0:		xapian-bindings-1.2.2-no-pyc.patch
 BuildRequires:	xapian-devel >= %{version}
-BuildRequires:	python-devel
+BuildRequires:	pkgconfig(python2)
 BuildRequires:	php-devel
 BuildRequires:	php-cli
 BuildRequires:	tcl-devel
@@ -101,6 +101,7 @@ export CPPFLAGS="%{optflags} -I%{java_home}/include"
 export JDK_HOME=%{java_home}
 export TCL_LIB=%{tcl_sitearch}
 export TCL_INC=%{_includedir}
+export PYTHON=%{__python2}
 autoreconf -fiv
 %configure \
 %if %build_mono
@@ -143,8 +144,8 @@ install -m644 java/built/xapian_jni.jar %{buildroot}%{_jnidir}
 
 %files python
 %doc %{_docdir}/xapian-bindings/python
-%{python_sitearch}/xapian/*.py*
-%{python_sitearch}/xapian/*.so
+%{python2_sitearch}/xapian/*.py*
+%{python2_sitearch}/xapian/*.so
 
 %files ruby
 %doc %{_docdir}/xapian-bindings/ruby
