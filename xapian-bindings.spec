@@ -2,7 +2,7 @@
 
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
-Version:	1.2.20
+Version:	1.2.22
 Release:	1
 License:	GPLv2+
 Group:		Development/Other
