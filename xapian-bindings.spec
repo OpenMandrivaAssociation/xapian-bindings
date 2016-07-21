@@ -3,7 +3,7 @@
 Summary:	Bindings for the Xapian
 Name:		xapian-bindings
 Version:	1.2.22
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Development/Other
 URL:		http://www.xapian.org
@@ -17,7 +17,7 @@ BuildRequires:	tcl-devel
 BuildRequires:	java-rpmbuild
 BuildRequires:	ruby-devel
 BuildRequires:	mono-devel
-BuildRequires:	java-1.7.0-devel
+BuildRequires:	java-1.8.0-devel
 
 %description
 SWIG and JNI bindings allowing Xapian to be used from various 
@@ -27,7 +27,7 @@ other programming languages.
 Summary:	Files needed for developing Java applications which use Xapian
 Group:		Development/Java
 Requires:	xapian-core >= %{version}
-Requires:	java-1.7.0-openjdk
+Requires:	java-1.8.0-openjdk
 
 %description java
 This package provides the files needed for developing Java applications which
