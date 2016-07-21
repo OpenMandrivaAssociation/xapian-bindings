@@ -16,7 +16,6 @@ BuildRequires:	php-cli
 BuildRequires:	tcl-devel
 BuildRequires:	java-rpmbuild
 BuildRequires:	ruby-devel
-BuildRequires:	mono-devel
 BuildRequires:	java-1.8.0-devel
 
 %description
@@ -39,6 +38,7 @@ Summary:	Files needed for developing C# applications which use Xapian
 Group:		Development/Other
 Requires:	xapian-core >= %{version}
 Requires:	mono
+BuildRequires:	mono-devel
 
 %description mono
 This package provides the files needed for developing 
