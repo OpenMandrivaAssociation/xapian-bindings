@@ -8,7 +8,7 @@ Version:	1.2.22
 Release:	2
 License:	GPLv2+
 Group:		Development/Other
-URL:		http://www.xapian.org
+URL:		https://www.xapian.org
 Source0:	http://www.oligarchy.co.uk/xapian/%{version}/%{name}-%{version}.tar.xz
 Patch0:		xapian-bindings-1.2.2-no-pyc.patch
 BuildRequires:	xapian-devel >= %{version}
